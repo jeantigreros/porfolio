@@ -4,3 +4,6 @@ function toggleMenu(params) {
    menu.classList.toggle("open");
    icon.classList.toggle("open");
 }
+
+var copy = document.querySelector('.logos-slide').cloneNode(true);
+document.querySelector('.logos-slide').appendChild(copy);

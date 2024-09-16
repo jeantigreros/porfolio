@@ -199,6 +199,7 @@ svg:hover path{
 #skills {
     margin-left: 20%;
     margin-right: 20%;
+    overflow: hidden;
 }
 
 hr.line {
@@ -206,13 +207,27 @@ hr.line {
     border-radius: 5px;
 }
 
+@keyframes slide {
+from {
+  transform: translateX(0);
+} to{
+  transform: translateX(-100%);
+}
+}
+
 .logos {
-    overflow: hidden;
     padding: 20px;
+    white-space: nowrap;
+    animation: 15s slide infinite linear;
+}
+
+.logos-slide {
+  display: inline-block;
 }
 
 .logos-slide svg{
     height: 50px;
+    padding: 0 30px;
 }
 
 svg path{
