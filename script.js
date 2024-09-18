@@ -5,5 +5,7 @@ function toggleMenu(params) {
    icon.classList.toggle("open");
 }
 
-//  var copy = document.querySelector('.logos-slide').cloneNode(true);
-//  document.querySelector('.logos-slide').appendChild(copy);
+function toggleText() {
+    const description = document.getElementById("section_text-p2");
+    description.classList.toggle("hidden");
+}

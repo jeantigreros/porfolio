@@ -133,18 +133,33 @@ a:hover {
     font-size: 1.75rem;
     margin: 0 10% 0 10%;
     color: var(--color4);
+
+}
+
+.name {
+    color:var(--color1);
+    cursor: pointer;
+}
+
+.name:hover {
+    text-decoration: underline;
+}
+
+.arrow-x {
+    transform: rotate(180deg);
 }
 
 .section_text-p1 {
     font-weight: 600;
 }
 
-.section_text-p2 {
+#section_text-p2 {
     margin: 0 10%;
+    font-size: 1.4rem;
 }
 
-.name {
-    color:var(--color1);
+.hidden {
+    display: none;
 }
 
 #social-container {
@@ -168,18 +183,26 @@ svg:hover path{
     transition: all 500ms ease;
 }
 
+/* Buttons */
+.btn-container {
+    margin-top: 4vh ;
+}
+
 .btn-color, .btn-color2 {
     padding: 10px;
     transition: all 300ms ease;
     border-radius: 30px;
-    background-color: gray;
+    background-color: var(--color4);
     border: none;
     cursor: pointer;
     font-size: 15px;
     font-weight: 500;
     color:var(--color2);
     font-family: var(--fonts);
+}
 
+.btn-color:hover {
+    background-color: var(--color1);
 }
 
 .btn-color2:hover {
