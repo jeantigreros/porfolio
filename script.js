@@ -9,8 +9,3 @@ function toggleText() {
     const description = document.getElementById("section_text-p2");
     description.classList.toggle("hidden");
 }
-
-
-// is a test for a commit
-
-// this is another commit
