@@ -5,4 +5,9 @@
     #x-nav {
         display: flex;
     }
+
+    .btn-color2 {
+        background-color: var(--color1);
+    }
+
 }
