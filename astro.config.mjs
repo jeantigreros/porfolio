@@ -13,10 +13,9 @@ export default defineConfig({
     serverIslands: true,
     env: {
         schema: {
-            API_ENDPOINT: envField.string({
-                access: 'public',
+            PUBLIC_ENDPOINT: envField.string({
                 context: 'server',
-
+                access: 'public'
             })
         }
       }

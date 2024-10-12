@@ -1,7 +1,7 @@
 ---
-import { API_ENDPOINT } from 'astro:env/server'
+import { PUBLIC_ENDPOINT } from 'astro:env/server'
 
-const response = await fetch(API_ENDPOINT)
+const response = await fetch(PUBLIC_ENDPOINT)
 const data = await response.json()
 const time = data.time;
 ---
