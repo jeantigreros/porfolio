@@ -1,0 +1,9 @@
+---
+import { API_ENDPOINT } from 'astro:env/server'
+
+const response = await fetch(API_ENDPOINT)
+const data = await response.json()
+const time = data.time;
+---
+
+<h2 class="text-6xl text-white font-bold"> {time} UTC -5 </h2>
