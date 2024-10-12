@@ -14,8 +14,8 @@ export default defineConfig({
     env: {
         schema: {
             PUBLIC_ENDPOINT: envField.string({
-                context: 'server',
-                access: 'public'
+                context: "server",
+                access: "public"
             })
         }
       }
