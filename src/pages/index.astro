@@ -6,6 +6,7 @@ import Card from "../components/Card.astro"
 import ClockApi from "../components/ClockApi.astro"
 import Footer from "../components/Footer.astro"
 import CardMobile from "../components/CardMobile.astro"
+import Proyects from "../components/Proyects.astro"
 
 export const prerender = true
 ---
@@ -21,16 +22,7 @@ export const prerender = true
 </section>
 <section  id="proyects">
     <SectionDivider title="Proyectos" />
-    <article class="w-full mx-auto py-44">
-        <div class="flex justify-center">
-            <h1 class="text-5xl font-semibold">
-                Proximamente ...
-            </h1>
-            <p>
-
-            </p>
-        </div>
-</article>
+      <Proyects />
 </section>
 <section  id="about">
     <SectionDivider title="Sobre mí"/>
@@ -68,7 +60,7 @@ export const prerender = true
 
             </p>
         </div>
-        <div class=" col-span-1 row-span-2 bg-[#25262b] rounded-3xl flex pt-20 pl-8 flex-col pr-8 border border-[#313234] hover:border-gray-600">
+        <div class=" col-span-1 row-span-2 flex pt-20 pl-8 pr-8 flex-col bg-[#25262b] rounded-3xl border border-[#313234] hover:border-gray-600">
             <h2 class="text-3xl text-[#9db2bf] font-bold">
                 Aficiones
             </h2>
@@ -138,7 +130,6 @@ export const prerender = true
         </div>
     </CardMobile>
 </section>
-
 <Footer />
 </main>
 </Layout>
