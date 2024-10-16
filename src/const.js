@@ -9,6 +9,7 @@ export const PROJECTS = [
       "example",
       "example2",
       "example3",
-    ]
+    ],
+    link: "https://www.google.com",
   },
 ]
