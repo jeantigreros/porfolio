@@ -9,6 +9,7 @@ An e-commerce website with features like user authentication, product management
 
 
 - [ ]  Town Business Directory
+      
 A web-based directory that connects small businesses in my hometown, providing a digital platform for local services and contacts.
 
 
