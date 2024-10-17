@@ -14,8 +14,10 @@ export default {
 								},
 						},
       animation: {
-       gradient: "gradient 4s linear infinite"
+       gradient: "gradient 4s linear infinite",
+       gradient2: "gradient 2s linear infinite"
        },
+
 				},
 		},
 };
