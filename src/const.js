@@ -1,15 +1,18 @@
 export const PROJECTS = [
   {
-    slug: "url-shortener",
-    title: "URL Shortener (tinyURL clone)",
+    slug: "tvbox-server",
+    title: "Monté mi propia nube en casa",
     hidden: false,
     description:
-      "This is a tiny url clone!",
+      "Cree un servidor con armbian a partir de una TVBOX e installe NextCloud",
     tech: [
-      "example",
-      "example2",
-      "example3",
+      "Linux",
+      "Docker",
+      "Hardware",
     ],
-    link: "https://www.google.com",
+    link: "https://gist.github.com/jeantigreros/71accf8e4a8602bc5a904d62e339d53a",
+    demo: false,
+    code: false,
   },
+
 ]
