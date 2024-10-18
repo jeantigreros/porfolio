@@ -1,0 +1,37 @@
+---
+import Badge from "./Badge.astro"
+---
+
+<section id="hero" class="w-full mx-auto py-44 justify-items-center text-center">
+  <a href="https://co.linkedin.com/in/jean-carlos-tigreros-0187b12b5" target="_blank" rel="noopener" class="flex justify-center items-center mb-5"><Badge>¡Disponible para trabajar!</Badge></a>
+  <h1 class="text-7xl font-extrabold flex-row gap-x-4 pb-10 text-center"><div class="flex items-center justify-center">
+      <span class="gradient-text absolute blur-md text-transparent select-none animate-gradient min-h[76px]">¡Hola!, soy Jean</span>
+      <h1 class="gradient-text text-transparent animate-gradient min-h[76px]">¡Hola!, soy Jean </h1>
+  </div></h1>
+  <h2 class="text-xl">Desarrollador web, Estudiante de ingeniería de sistemas. De Colombia 🇨🇴</h2>
+
+  <div class="pt-20">
+  <a href="/resume.pdf" rel="noopener" target="_blank" class="relative inline-flex font-semibold items-center justify-center px-10 py-3 overflow-hidden text-white bg-gray-800 rounded-full group">
+      <span class="absolute w-0 h-0 transition-all duration-500 ease-out gradient-button animate-gradient2 rounded-full group-hover:w-56 group-hover:h-56"></span>
+      <span class="absolute inset-0 w-full h-full rounded-full opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700 "></span>
+      <span class="relative">Descarga mi CV!</span>
+  </a>
+</div>
+</section>
+
+<style>
+    .gradient-text {
+        line-height: normal;
+        background: linear-gradient(
+            to right, #a855f7,#ec4899,#eab308,#ec4899,#a855f7,#ec4899,#eab308);
+        background-clip: text;
+        background-size: 300% 300%;
+    }
+
+    .gradient-button {
+        line-height: normal;
+        background: linear-gradient(
+            to right, #a855f7,#ec4899,#eab308,#ec4899,#a855f7,#ec4899,#eab308);
+        background-size: 300% 300%;
+    }
+</style>
