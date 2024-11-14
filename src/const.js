@@ -4,7 +4,7 @@ export const PROJECTS = [
     title: "Monté mi propia nube en casa",
     hidden: false,
     description:
-      "Cree un servidor con armbian a partir de una TVBOX e installe NextCloud",
+      "Modifiqué y compilé una imagen personalizada de Armbian para que funcionara en una TVBOX DQ08, con la finalidad de que sirviera como un servidor con linux disponible en mi red local.",
     tech: [
       "Linux",
       "Docker",
