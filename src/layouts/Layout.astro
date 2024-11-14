@@ -1,51 +1,54 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
-import "@fontsource-variable/sora"
+import "@fontsource-variable/sora";
 
 interface Props {
-	title: string;
+  title: string;
 }
 const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Jean Tigreros Porfolio Web" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-		<title>{title}</title>
-	</head>
-	<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Jean Tigreros Porfolio Web" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <title>{title}</title>
+  </head>
+  <body>
     <Header />
-     <main>
-        <slot />
-     </main>
+    <main>
+      <slot />
+    </main>
     <Footer />
-	</body>
+  </body>
 </html>
 <style is:global>
+  :root {
+    color-scheme: light dark;
+  }
+  html {
+    background-color: #17181c;
+    font-family: "Sora Variable", system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
-    :root {
-        color-scheme: light dark;
-    }
-	html {
-        background-color: #17181c;
-		font-family: 'Sora Variable', system-ui, sans-serif;
-        scroll-behavior: smooth;
-    }
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    * {
-        box-sizing: border-box;
-    }
-
-
+  svg {
+    height: 75px;
+    width: 85px;
+    padding-top: 4px;
+  }
 </style>
