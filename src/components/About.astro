@@ -1,6 +1,5 @@
 ---
 import Card from "./Card.astro";
-import ClockApi from "./ClockApi.astro";
 import SectionDivider from "./SectionDivider.astro";
 import AstroIcon from "./icons/Astro.astro";
 import NextjsIcon from "./icons/Nextjs.astro";
@@ -82,9 +81,12 @@ import GitIcon from "./icons/Git.astro";
       <div
         class="xl:col-span-1 xl:row-span-1 bg-[#25262b] rounded-3xl flex flex-col border border-[#313234] hover:border-gray-600 justify-center items-center"
       >
-        <ClockApi server:defer>
-          <span slot="fallback" class="text-5xl text-white"> Cargando... </span>
-        </ClockApi>
+        <!-- <ClockApi server:defer> -->
+        <!--   <span slot="fallback" class="text-5xl text-white"> Cargando... </span> -->
+        <!-- </ClockApi> -->
+        <span class="text-5xl text-white" id="time">0:00 PM</span>
+        <p class="text-2xl">Colombia</p>
+
       </div>
     </Card>
   </div>
@@ -100,3 +102,20 @@ import GitIcon from "./icons/Git.astro";
       radial-gradient(circle at 25% 65%, rgb(46, 46, 47), transparent 450px);
   }
 </style>
+
+<script type="text/javascript">
+    // declare time zone formatting
+    let options = {
+        timeZone: 'America/Bogota',
+        hour: 'numeric',
+        minute: 'numeric'
+    },
+    formatter = new Intl.DateTimeFormat([], options);
+
+    // set time
+    setInterval(
+        () => {
+            document.querySelector("#time").innerText = formatter.format(new Date());
+        }
+    , 1000)
+</script>
