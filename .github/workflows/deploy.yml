@@ -23,6 +23,7 @@ jobs:
     needs: build
     permissions:
       pages: write
+      contents: read
       id-token: write
     steps:
       - uses: actions/deploy-pages@v3
