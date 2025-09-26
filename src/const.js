@@ -16,7 +16,7 @@ export const PROJECTS = [
   },
 
   {
-    slug: "web-server-for-pos-printer",
+    slug: "python-odoo-script",
     title: "Aplicación para permitir impresión desde un servicio externo",
     hidden: false,
     description:
