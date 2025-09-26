@@ -15,4 +15,19 @@ export const PROJECTS = [
     code: false,
   },
 
+  {
+    slug: "web-server-for-pos-printer",
+    title: "Aplicación para permitir impresión desde un servicio externo",
+    hidden: false,
+    description:
+      "Hice un servidor web que toma el XML que da ODOO lo transforma en una imagen, lee la imagen, y manda comandos ESC/POS a la impresora para imprimir.",
+    tech: [
+      "Flask",
+      "Web Server",
+      "Serial Ports",
+    ],
+    link: "https://github.com/jeantigreros/python-odoo-script",
+    demo: false,
+    code: true,
+  },
 ]
