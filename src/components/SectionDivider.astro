@@ -4,7 +4,7 @@ interface Props {
 }
 const { title } = Astro.props;
 ---
-<section class=" mx-auto w-9/12 mt-10">
-    <h1 class="text-5xl font-extrabold">{title}</h1>
-    <hr class="rounded my-9 border-2 opacity-50">
-</section>
+<div class="max-w-6xl mx-auto px-4 mt-16 mb-10">
+  <h2 class="text-3xl md:text-5xl font-extrabold text-white">{title}</h2>
+  <div class="h-1 w-16 md:w-24 bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 rounded-full mt-4"></div>
+</div>

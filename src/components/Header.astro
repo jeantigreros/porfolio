@@ -1,18 +1,40 @@
-<header class="flex justify-between items-center py-3 w-3/4 max-2xl:w-[640px] max-sm:hidden  mx-auto">
-    <img
-    class="rounded-full w-14 h-14 static"
-    src="./popcat.gif"
-    alt="popcat"
-    />
-    <img
-    class="rounded-full w-14 h-14 absolute active hover:opacity-0"
-    src="./popcat.png"
-    alt="popcat"
-    />
-    <nav class="flex flex-row gap-x-10 opacity-80">
-      <a href="#experience">Experiencia</a>
-      <a href="#projects">Proyectos</a>
-      <a href="#about">Sobre mí</a>
-        <a href="mailto:jtigreros92@gmail.com">Contacto</a>
+<header class="sticky top-0 z-50 backdrop-blur-md bg-[#17181c]/80 border-b border-[#313234]/50">
+  <div class="flex justify-between items-center py-3 px-4 md:w-3/4 md:mx-auto max-w-6xl">
+    <a href="#" class="relative block w-11 h-11">
+      <img class="rounded-full w-11 h-11" src={import.meta.env.BASE_URL + '/popcat.gif'} alt="popcat" />
+      <img class="rounded-full w-11 h-11 absolute inset-0 opacity-0 hover:opacity-100 transition-opacity" src={import.meta.env.BASE_URL + '/popcat.png'} alt="popcat" />
+    </a>
+    <nav class="hidden md:flex gap-x-10 text-sm opacity-80">
+      <a href="#projects" class="hover:text-purple-400 transition">Proyectos</a>
+      <a href="#about" class="hover:text-purple-400 transition">Sobre mí</a>
+      <a href="mailto:jtigreros92@gmail.com" class="hover:text-purple-400 transition">Contacto</a>
     </nav>
+    <button id="menu-toggle" class="md:hidden p-2 text-white" aria-label="Abrir menú">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-[#313234]/50 bg-[#1e1f24]">
+    <nav class="flex flex-col items-center gap-6 py-8 text-lg">
+      <a href="#projects" class="hover:text-purple-400 transition">Proyectos</a>
+      <a href="#about" class="hover:text-purple-400 transition">Sobre mí</a>
+      <a href="mailto:jtigreros92@gmail.com" class="hover:text-purple-400 transition">Contacto</a>
+    </nav>
+  </div>
 </header>
+
+<script>
+  (function() {
+    var toggle = document.getElementById("menu-toggle");
+    var menu = document.getElementById("mobile-menu");
+    if (toggle && menu) {
+      toggle.addEventListener("click", function() {
+        if (menu) menu.classList.toggle("hidden");
+      });
+      menu.querySelectorAll("a").forEach(function(link) {
+        link.addEventListener("click", function() {
+          if (menu) menu.classList.add("hidden");
+        });
+      });
+    }
+  })();
+</script>

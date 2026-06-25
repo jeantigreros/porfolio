@@ -13,17 +13,17 @@ import PythonIcon from "./icons/Python.astro";
 import NodeIcon from "./icons/Node.astro";
 import LinuxIcon from "./icons/Linux.astro";
 import GitIcon from "./icons/Git.astro";
+import SqlIcon from "./icons/Sql.astro";
+import PandasIcon from "./icons/Pandas.astro";
 ---
 
 <section id="about">
   <SectionDivider title="Sobre mí" />
-  <div class="gradients">
+  <div class="[background:radial-gradient(circle_at_70%_40%,rgb(46,46,47),transparent_450px),radial-gradient(circle_at_25%_65%,rgb(46,46,47),transparent_450px)]">
     <Card>
-      <div
-        class="xl:col-span-2 xl:row-span-2 bg-[#25262b] rounded-3xl flex pt-20 px-8 pb-8 flex-col border border-[#313234] hover:border-gray-600"
-      >
-        <h2 class="text-3xl text-[#9db2bf] font-bold">Jean Carlos Tigreros</h2>
-        <p class="text-xl leading-relaxed mt-4">
+      <div class="xl:col-span-2 xl:row-span-2 bg-[#25262b] rounded-3xl p-6 md:p-8 border border-[#313234] hover:border-gray-600 transition-all duration-300">
+        <h2 class="text-2xl md:text-3xl text-[#9db2bf] font-bold">Jean Carlos Tigreros</h2>
+        <p class="text-base md:text-xl leading-relaxed mt-4 text-gray-200">
           Hola! tengo 21 años, actualmente estoy cursando una ingeniería en la
           Universidad Nacional Abierta y a Distancia, en Palmira, Colombia 🇨🇴,
           soy desarrollador web freelancer, mi enfoque está dirigido al
@@ -31,91 +31,69 @@ import GitIcon from "./icons/Git.astro";
           otros. Desde pequeño siempre me ha interesado el software, y con el
           tiempo se ha convertido en una pasión 😊
         </p>
-        <p class="text-xl leading-relaxed mt-4">
+        <p class="text-base md:text-xl leading-relaxed mt-4 text-gray-200">
           Dale un vistazo a mis redes sociales!
         </p>
-        <a
-          class="underline"
-          href="https://github.com/jeantigreros"
-          target="_blank">Github</a
-        >
-        <a class="underline" href="https://x.com/nekro24" target="_blank">X</a>
+        <div class="flex gap-4 mt-3">
+          <a class="underline text-blue-400 hover:text-blue-300 transition" href="https://github.com/jeantigreros" target="_blank">Github</a>
+          <a class="underline text-blue-400 hover:text-blue-300 transition" href="https://x.com/nekro24" target="_blank">X</a>
+        </div>
       </div>
-      <div
-        class="xl:col-span-1 xl:row-span-3 bg-[#25262b] rounded-3xl flex pt-20 px-8 pb-8 flex-col border border-[#313234] hover:border-gray-600"
-      >
-        <h2 class="text-3xl text-[#9db2bf] font-bold">Habilidades</h2>
-        <p class="text-xl leading-relaxed mt-4">
-          Sé usar diversas tecnologías, entre ellas están:
-          <article
-            class="[&>*]:border [&>*]:md:p-1 [&>*]:border-[#313234] [&>*]:bg-slate-800 flex flex-wrap gap-4 [&>*]:rounded-xl [&>*]:p-5 justify-center pt-10 [&>*]:text-center"
-          >
-            <AstroIcon />
-            <NextjsIcon />
-            <ReactIcon />
-            <CssIcon />
-            <JavascriptIcon />
-            <TypescriptIcon />
-            <HtmlIcon />
-            <TailwindIcon />
-            <PythonIcon />
-            <NodeIcon />
-            <LinuxIcon />
-            <GitIcon />
-          </article>
-        </p>
-      </div>
-      <div
-        class="xl:col-span-1 xl:row-span-1 bg-[#25262b] rounded-3xl flex pt-20 px-8 pb-8 flex-col border border-[#313234] hover:border-gray-600"
-      >
-        <h2 class="text-3xl text-[#9db2bf] font-bold">Aficiones</h2>
-        <p class="text-xl leading-relaxed mt-4">
-          Fuera del desarrollo de software, también tengo otros intereses como
-          lo son los🎮 <span class="text-[#9db2bf] font-bold">Videojuegos</span
-          >, la 🏛️ <span class="text-[#9db2bf] font-bold">Filosofía</span>, la
-          📷 <span class="text-[#9db2bf] font-bold">Fotografía</span> y el 💪 <span
-            class="text-[#9db2bf] font-bold">Ejercicio</span
-          >
-        </p>
-      </div>
-      <div
-        class="xl:col-span-1 xl:row-span-1 bg-[#25262b] rounded-3xl flex flex-col border border-[#313234] hover:border-gray-600 justify-center items-center"
-      >
-        <!-- <ClockApi server:defer> -->
-        <!--   <span slot="fallback" class="text-5xl text-white"> Cargando... </span> -->
-        <!-- </ClockApi> -->
-        <span class="text-5xl text-white" id="time">0:00 PM</span>
-        <p class="text-2xl">Colombia</p>
 
+      <div class="xl:col-span-1 xl:row-span-3 bg-[#25262b] rounded-3xl p-6 md:p-8 border border-[#313234] hover:border-gray-600 transition-all duration-300">
+        <h2 class="text-2xl md:text-3xl text-[#9db2bf] font-bold">Habilidades</h2>
+        <p class="text-base md:text-xl leading-relaxed mt-4 text-gray-200">Tecnologías con las que trabajo:</p>
+        <div class="skills-grid flex flex-wrap gap-3 justify-center pt-6 [&>*]:bg-slate-800 [&>*]:rounded-xl [&>*]:border [&>*]:border-[#313234] [&>*]:p-3 md:[&>*]:p-5 [&>*]:text-center [&>*]:min-w-[80px]">
+          <AstroIcon />
+          <NextjsIcon />
+          <ReactIcon />
+          <CssIcon />
+          <JavascriptIcon />
+          <TypescriptIcon />
+          <HtmlIcon />
+          <TailwindIcon />
+          <PythonIcon />
+          <SqlIcon />
+          <PandasIcon />
+          <NodeIcon />
+          <LinuxIcon />
+          <GitIcon />
+        </div>
+      </div>
+
+      <div class="xl:col-span-1 xl:row-span-1 bg-[#25262b] rounded-3xl p-6 md:p-8 border border-[#313234] hover:border-gray-600 transition-all duration-300">
+        <h2 class="text-2xl md:text-3xl text-[#9db2bf] font-bold">Aficiones</h2>
+        <p class="text-base md:text-xl leading-relaxed mt-4 text-gray-200">
+          Fuera del desarrollo: 🎮 <span class="text-[#9db2bf] font-bold">Videojuegos</span>,
+          🏛️ <span class="text-[#9db2bf] font-bold">Filosofía</span>,
+          📷 <span class="text-[#9db2bf] font-bold">Fotografía</span>,
+          💪 <span class="text-[#9db2bf] font-bold">Ejercicio</span>
+        </p>
+      </div>
+
+      <div class="xl:col-span-1 xl:row-span-1 bg-[#25262b] rounded-3xl border border-[#313234] hover:border-gray-600 transition-all duration-300 flex flex-col items-center justify-center p-6">
+        <span class="text-4xl md:text-5xl text-white font-light" id="time">0:00 PM</span>
+        <p class="text-xl md:text-2xl text-gray-400 mt-2">Colombia 🇨🇴</p>
       </div>
     </Card>
   </div>
 </section>
 
 <style>
-  .gradients {
-    background: radial-gradient(
-        circle at 70% 40%,
-        rgb(46, 46, 47),
-        transparent 450px
-      ),
-      radial-gradient(circle at 25% 65%, rgb(46, 46, 47), transparent 450px);
+  .skills-grid :global(svg) {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding-top: 0;
   }
 </style>
 
-<script type="text/javascript">
-    // declare time zone formatting
-    let options = {
-        timeZone: 'America/Bogota',
-        hour: 'numeric',
-        minute: 'numeric'
-    },
-    formatter = new Intl.DateTimeFormat([], options);
-
-    // set time
-    setInterval(
-        () => {
-            document.querySelector("#time").innerText = formatter.format(new Date());
-        }
-    , 1000)
+<script>
+  (function() {
+    var el = document.querySelector("#time");
+    if (el) {
+      var formatter = new Intl.DateTimeFormat([], { timeZone: 'America/Bogota', hour: 'numeric', minute: 'numeric' } as Intl.DateTimeFormatOptions);
+      el.textContent = formatter.format(new Date());
+      setInterval(function() { if (el) el.textContent = formatter.format(new Date()); }, 1000);
+    }
+  })();
 </script>
