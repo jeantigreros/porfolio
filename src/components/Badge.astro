@@ -1,4 +1,16 @@
-<span
-    class="bg-blue-100 text-blue-800 text-sm font-medium me-2 animate-bounce px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 hover:bg-blue-950">
-    <slot />
-</span>
+<span class="badge"><slot /></span>
+
+<style>
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-ink-2);
+    background: var(--color-paper-2);
+    border: 1px solid var(--color-rule-2);
+    border-radius: var(--radius-pill);
+    padding: var(--space-xs) var(--space-md);
+    white-space: nowrap;
+  }
+</style>
