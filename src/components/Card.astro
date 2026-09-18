@@ -1,5 +1,18 @@
-<div class="w-full max-w-6xl mx-auto px-4">
-  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 auto-rows-min">
-    <slot />
-  </div>
+<div class="card">
+  <slot />
 </div>
+
+<style>
+  .card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+    background: var(--color-paper-2);
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-card);
+    padding: var(--space-xl) var(--space-lg);
+  }
+  @media (min-width: 60rem) {
+    .card { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-2xl); }
+  }
+</style>
