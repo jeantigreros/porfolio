@@ -1,10 +1,38 @@
 ---
 interface Props {
-    title: string;
+  title: string;
+  note?: string;
 }
-const { title } = Astro.props;
+const { title, note } = Astro.props;
 ---
-<div class="max-w-6xl mx-auto px-4 mt-16 mb-10">
-  <h2 class="text-3xl md:text-5xl font-extrabold text-white">{title}</h2>
-  <div class="h-1 w-16 md:w-24 bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 rounded-full mt-4"></div>
+
+<div class="sechead">
+  <h2 class="sechead__title">{title}</h2>
+  {note && <p class="sechead__note">{note}</p>}
 </div>
+
+<style>
+  .sechead {
+    max-width: 72rem;
+    margin: 0 auto var(--space-lg);
+    padding: var(--space-2xl) var(--space-md) 0;
+  }
+  .sechead__title {
+    font-family: var(--font-display);
+    font-style: normal;
+    font-weight: 700;
+    font-size: var(--text-2xl);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--color-ink);
+    margin: 0 0 var(--space-xs);
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+  .sechead__note {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    margin: 0;
+  }
+</style>
