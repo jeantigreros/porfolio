@@ -1,36 +1,117 @@
 ---
-import Badge from "./Badge.astro"
 ---
 
-<section id="hero" class="w-full mx-auto py-28 md:py-44 px-4 flex flex-col items-center text-center">
-  <a href="https://co.linkedin.com/in/jean-carlos-tigreros-0187b12b5" target="_blank" rel="noopener" class="mb-5"><Badge>Disponible para trabajar</Badge></a>
-  <div class="relative">
-    <h1 class="gradient-text text-transparent bg-clip-text animate-gradient text-4xl sm:text-5xl md:text-7xl font-extrabold pb-6 select-none">
-      Hola, soy Jean
-    </h1>
-    <h1 class="gradient-text text-transparent bg-clip-text animate-gradient absolute inset-0 blur-xl opacity-60 text-4xl sm:text-5xl md:text-7xl font-extrabold pb-6 select-none" aria-hidden="true">
-      Hola, soy Jean
-    </h1>
+<section class="hero reveal" style="--i: 0" aria-labelledby="hero-title">
+  <div class="hero__main">
+    <p class="hero__kicker"><span class="hero__dot" aria-hidden="true"></span>Disponible para trabajar · Palmira, Colombia</p>
+    <h1 class="hero__display" id="hero-title">Jean Tigreros — desarrollo web y sistemas, de la idea al servidor.</h1>
+    <p class="hero__lede">Tengo 21 años y estudio ingeniería de sistemas en la UNAD. Trabajo freelance: páginas web, backends pequeños y fierros que terminan sirviendo tráfico real en mi red local.</p>
+    <div class="hero__actions">
+      <a class="hero__link" href={import.meta.env.BASE_URL + "/resume.pdf"} target="_blank" rel="noopener">Descargar CV →</a>
+      <a class="hero__link hero__link--quiet" href="mailto:jtigreros92@gmail.com">Escríbeme ↗</a>
+    </div>
   </div>
-  <p class="text-lg md:text-xl text-gray-300">Desarrollador web & Estudiante de ingeniería de sistemas. De Colombia 🇨🇴</p>
-  <div class="pt-10 md:pt-20">
-    <a href={import.meta.env.BASE_URL + '/resume.pdf'} rel="noopener" target="_blank" class="relative inline-flex font-semibold items-center justify-center px-8 py-3 md:px-10 md:py-3 text-sm md:text-base overflow-hidden text-white bg-gray-800 rounded-full group">
-      <span class="absolute w-0 h-0 transition-all duration-500 ease-out gradient-button animate-gradient2 rounded-full group-hover:w-56 group-hover:h-56"></span>
-      <span class="absolute inset-0 w-full h-full rounded-full opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
-      <span class="relative">Descarga mi CV</span>
-    </a>
-  </div>
+  <aside class="hero__proof" aria-label="Estado actual">
+    <dl class="proof">
+      <div class="proof__row"><dt>ubicación</dt><dd>América/Bogotá · <span id="time">—</span></dd></div>
+      <div class="proof__row"><dt>foco</dt><dd>web · linux · datos</dd></div>
+      <div class="proof__row"><dt>ahora</dt><dd>4 proyectos publicados</dd></div>
+      <div class="proof__row"><dt>contacto</dt><dd><a href="https://github.com/jeantigreros" target="_blank" rel="noopener">github</a> · <a href="https://x.com/nekro24" target="_blank" rel="noopener">x</a> · <a href="https://co.linkedin.com/in/jean-carlos-tigreros-0187b12b5" target="_blank" rel="noopener">linkedin</a></dd></div>
+    </dl>
+  </aside>
 </section>
 
+<script>
+  (function () {
+    var el = document.querySelector("#time");
+    if (el) {
+      var fmt = new Intl.DateTimeFormat("es-CO", { timeZone: "America/Bogota", hour: "numeric", minute: "2-digit" });
+      el.textContent = fmt.format(new Date());
+      setInterval(function () { if (el) el.textContent = fmt.format(new Date()); }, 30000);
+    }
+  })();
+</script>
+
 <style>
-  .gradient-text {
-    background: linear-gradient(to right, #a855f7, #ec4899, #eab308, #ec4899, #a855f7, #ec4899, #eab308);
-    background-size: 300% 300%;
-    background-clip: text;
-    -webkit-background-clip: text;
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+    max-width: 72rem;
+    margin-inline: auto;
+    padding: var(--space-2xl) var(--space-md) var(--space-xl);
+    text-align: left;
   }
-  .gradient-button {
-    background: linear-gradient(to right, #a855f7, #ec4899, #eab308, #ec4899, #a855f7, #ec4899, #eab308);
-    background-size: 300% 300%;
+  .hero__kicker {
+    display: flex; align-items: center; gap: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    margin: 0 0 var(--space-md);
+  }
+  .hero__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); flex: none; }
+  .hero__display {
+    font-family: var(--font-display);
+    font-style: normal;
+    font-weight: 700;
+    font-size: var(--text-display-s);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--color-ink);
+    overflow-wrap: anywhere;
+    min-width: 0;
+    margin: 0 0 var(--space-md);
+    max-width: 22ch;
+  }
+  .hero__lede {
+    font-size: var(--text-md);
+    line-height: 1.6;
+    color: var(--color-ink-2);
+    max-width: 60ch;
+    margin: 0 0 var(--space-lg);
+  }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-md); }
+  .hero__link {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    white-space: nowrap;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .hero__link:hover { text-decoration-thickness: 2px; }
+  .hero__link--quiet { color: var(--color-ink); }
+  .hero__proof {
+    border-top: 1px solid var(--color-rule);
+    padding-top: var(--space-md);
+    min-width: 0;
+  }
+  .proof { margin: 0; display: grid; gap: 0; }
+  .proof__row {
+    display: grid;
+    grid-template-columns: minmax(0, 7rem) minmax(0, 1fr);
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-rule);
+    font-size: var(--text-sm);
+  }
+  .proof__row dt {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    padding-top: 2px;
+  }
+  .proof__row dd { margin: 0; color: var(--color-ink-2); min-width: 0; }
+  .proof__row dd a { color: var(--color-ink); }
+  #time { font-variant-numeric: tabular-nums; }
+  @media (min-width: 60rem) {
+    .hero { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-2xl); padding-top: var(--space-3xl); }
+    .hero__proof { border-top: none; border-left: 1px solid var(--color-rule); padding-top: 0; padding-left: var(--space-xl); align-self: start; }
   }
 </style>
