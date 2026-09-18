@@ -3,6 +3,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 import "@fontsource-variable/sora";
+import "../styles/tokens.css";
 
 interface Props {
   title: string;
@@ -16,11 +17,17 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Portafolio personal de Jean Tigreros - Desarrollador web y estudiante de ingeniería de sistemas" />
-    <meta name="theme-color" content="#17181c" />
+    <meta name="theme-color" content="#1a1d27" />
     <link rel="icon" type="image/svg+xml" href={import.meta.env.BASE_URL + '/favicon.ico'} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <title>{title}</title>
   </head>
-  <body class="text-white">
+  <body>
     <Header />
     <main>
       <slot />
@@ -29,39 +36,65 @@ const { title } = Astro.props;
   </body>
 </html>
 <style is:global>
-  :root {
-    color-scheme: dark;
-  }
   html {
-    background-color: #17181c;
-    font-family: "Sora Variable", system-ui, sans-serif;
+    overflow-x: clip;
+    background-color: var(--color-paper);
+    font-family: var(--font-body);
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
   }
   body {
+    overflow-x: clip;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
   }
   * {
     box-sizing: border-box;
   }
   ::selection {
-    background-color: #a855f7;
-    color: white;
+    background-color: var(--color-accent);
+    color: var(--color-accent-ink);
   }
   ::-webkit-scrollbar {
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #17181c;
+    background: var(--color-paper);
   }
   ::-webkit-scrollbar-thumb {
-    background: #313234;
+    background: var(--color-rule-2);
     border-radius: 4px;
   }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #4a4b4e;
+
+  /* One orchestrated entrance; content settles after load */
+  .reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: hallmark-reveal var(--dur-long) var(--ease-out) forwards;
+    animation-delay: calc(var(--i, 0) * 60ms);
+  }
+  @keyframes hallmark-reveal {
+    to { opacity: 1; transform: none; }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 150ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 150ms !important;
+    }
+    .reveal { animation: hallmark-reveal-reduced 150ms linear forwards; }
+    @keyframes hallmark-reveal-reduced { to { opacity: 1; transform: none; } }
+    html { scroll-behavior: auto; }
   }
 </style>
