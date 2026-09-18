@@ -46,5 +46,22 @@ export const PROJECTS = [
     link: "https://gruposinnsa.com/",
     demo: false,
     code: false,
+  },
+  {
+    slug: "checkdisks",
+    title: "Proceso ETL personal para indexación de HDDs",
+    hidden: false,
+    description: "Proceso ETL para el almacenamiento de información de discos duros/sólidos integrado con un script para comprobar con SMART la integridad de los mismos. El script produce un json con la información del disco y el pipeline ingresa los datos, los limpia y produce un archivo parquet con la información lista",
+    tech: [
+      "SMART",
+      "Python",
+      "Pandas",
+      "JSON",
+      "ETL",
+      "Data Engineering"
+    ],
+    link: "https://github.com/jeantigreros/checkdisks",
+    demo: false,
+    code: true,
   }
 ]
