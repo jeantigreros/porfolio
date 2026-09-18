@@ -1,40 +1,346 @@
-<header class="sticky top-0 z-50 backdrop-blur-md bg-[#17181c]/80 border-b border-[#313234]/50">
-  <div class="flex justify-between items-center py-3 px-4 md:w-3/4 md:mx-auto max-w-6xl">
-    <a href="#" class="relative block w-11 h-11">
-      <img class="rounded-full w-11 h-11" src={import.meta.env.BASE_URL + '/popcat.gif'} alt="popcat" />
-      <img class="rounded-full w-11 h-11 absolute inset-0 opacity-0 hover:opacity-100 transition-opacity" src={import.meta.env.BASE_URL + '/popcat.png'} alt="popcat" />
+---
+import { PROJECTS } from "../const";
+
+const visible = PROJECTS.filter((p) => !p.hidden);
+---
+
+<header class="nav" id="site-nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__brand" aria-label="Jean Tigreros — inicio">
+      <img
+        class="nav__avatar"
+        src={import.meta.env.BASE_URL + "/popcat.gif"}
+        alt=""
+        width="32"
+        height="32"
+        loading="eager"
+      />
+      <span class="nav__wordmark">jean<wbr />.tigreros</span>
+      <span class="nav__status" aria-hidden="true"></span>
     </a>
-    <nav class="hidden md:flex gap-x-10 text-sm opacity-80">
-      <a href="#projects" class="hover:text-purple-400 transition">Proyectos</a>
-      <a href="#about" class="hover:text-purple-400 transition">Sobre mí</a>
-      <a href="mailto:jtigreros92@gmail.com" class="hover:text-purple-400 transition">Contacto</a>
+
+    <button class="searchpill" id="searchpill" type="button" aria-label="Buscar en el sitio (Ctrl K)">
+      <svg class="searchpill__ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      <span class="searchpill__text">Buscar proyectos…</span>
+      <span class="searchpill__kbd" aria-hidden="true"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+    </button>
+
+    <nav class="nav__right" aria-label="Principal">
+      <a href="#proyectos" class="nav__link">Proyectos</a>
+      <a href="#sobre-mi" class="nav__link">Sobre mí</a>
+      <a href="mailto:jtigreros92@gmail.com" class="nav__cta">Contacto</a>
     </nav>
-    <button id="menu-toggle" class="md:hidden p-2 text-white" aria-label="Abrir menú">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+
+    <button id="menu-toggle" class="nav__burger" aria-label="Abrir menú" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
-  <div id="mobile-menu" class="hidden md:hidden border-t border-[#313234]/50 bg-[#1e1f24]">
-    <nav class="flex flex-col items-center gap-6 py-8 text-lg">
-      <a href="#projects" class="hover:text-purple-400 transition">Proyectos</a>
-      <a href="#about" class="hover:text-purple-400 transition">Sobre mí</a>
-      <a href="mailto:jtigreros92@gmail.com" class="hover:text-purple-400 transition">Contacto</a>
+  <div id="mobile-menu" class="nav__mobile" hidden>
+    <nav class="nav__mobile-links" aria-label="Móvil">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="mailto:jtigreros92@gmail.com">Contacto</a>
     </nav>
   </div>
 </header>
 
+<div class="cmdk" id="cmdk" aria-hidden="true">
+  <div class="cmdk__backdrop" data-close></div>
+  <div class="cmdk__panel" role="dialog" aria-modal="true" aria-label="Buscar en el sitio">
+    <div class="cmdk__field">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      <input id="cmdk-input" type="text" placeholder="Buscar proyectos o secciones…" autocomplete="off" />
+      <kbd>esc</kbd>
+    </div>
+    <div class="cmdk__results" id="cmdk-results" role="listbox" aria-label="Resultados">
+      <p class="cmdk__group">Secciones</p>
+      <button class="cmdk__item" role="option" data-href="#proyectos"><span>Proyectos</span><span class="cmdk__hint">índice</span></button>
+      <button class="cmdk__item" role="option" data-href="#sobre-mi"><span>Sobre mí</span><span class="cmdk__hint">perfil</span></button>
+      <button class="cmdk__item" role="option" data-href="mailto:jtigreros92@gmail.com"><span>Contacto</span><span class="cmdk__hint">email</span></button>
+      <p class="cmdk__group">Trabajo</p>
+      {visible.map((p) => (
+        <button class="cmdk__item" role="option" data-href={p.link}>
+          <span>{p.title}</span><span class="cmdk__hint">{p.tech.slice(0, 2).join(" · ")}</span>
+        </button>
+      ))}
+    </div>
+    <div class="cmdk__foot" aria-hidden="true">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navegar</span>
+      <span><kbd>↵</kbd> abrir</span>
+      <span><kbd>esc</kbd> cerrar</span>
+    </div>
+  </div>
+</div>
+
 <script>
-  (function() {
+  (function () {
     var toggle = document.getElementById("menu-toggle");
     var menu = document.getElementById("mobile-menu");
     if (toggle && menu) {
-      toggle.addEventListener("click", function() {
-        if (menu) menu.classList.toggle("hidden");
+      var t = toggle;
+      var m = menu;
+      t.addEventListener("click", function () {
+        var open = m.hasAttribute("hidden");
+        if (open) {
+          m.removeAttribute("hidden");
+          t.setAttribute("aria-expanded", "true");
+        } else {
+          m.setAttribute("hidden", "");
+          t.setAttribute("aria-expanded", "false");
+        }
       });
-      menu.querySelectorAll("a").forEach(function(link) {
-        link.addEventListener("click", function() {
-          if (menu) menu.classList.add("hidden");
+      m.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          m.setAttribute("hidden", "");
+          t.setAttribute("aria-expanded", "false");
         });
       });
     }
+
+    var pill = document.getElementById("searchpill");
+    var cmdk = document.getElementById("cmdk");
+    var input = document.getElementById("cmdk-input") as HTMLInputElement | null;
+    var results = document.getElementById("cmdk-results");
+    function openCmdk() {
+      if (!cmdk) return;
+      cmdk.classList.add("is-open");
+      cmdk.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "clip";
+      if (input) input.focus();
+      setActive(0);
+    }
+    function closeCmdk() {
+      if (!cmdk) return;
+      cmdk.classList.remove("is-open");
+      cmdk.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (pill) pill.focus();
+    }
+    function items() {
+      return results ? Array.from(results.querySelectorAll(".cmdk__item")) : [];
+    }
+    function setActive(idx: number) {
+      var list = items();
+      list.forEach(function (el, i) {
+        el.classList.toggle("is-active", i === idx);
+      });
+    }
+    function activeIndex() {
+      var list = items();
+      for (var i = 0; i < list.length; i++) {
+        if (list[i].classList.contains("is-active")) return i;
+      }
+      return 0;
+    }
+    if (pill && cmdk) {
+      var p = pill;
+      var c = cmdk;
+      p.addEventListener("click", openCmdk);
+      document.addEventListener("keydown", function (e) {
+        var mod = e.ctrlKey || e.metaKey;
+        if (mod && (e.key === "k" || e.key === "K")) {
+          e.preventDefault();
+          if (c.classList.contains("is-open")) closeCmdk();
+          else openCmdk();
+        }
+        if (e.key === "Escape" && c.classList.contains("is-open")) closeCmdk();
+        if (c.classList.contains("is-open") && (e.key === "ArrowDown" || e.key === "ArrowUp")) {
+          e.preventDefault();
+          var list = items();
+          var i = activeIndex() + (e.key === "ArrowDown" ? 1 : -1);
+          i = (i + list.length) % list.length;
+          setActive(i);
+          var target = list[i];
+          if (target) target.scrollIntoView({ block: "nearest" });
+        }
+        if (c.classList.contains("is-open") && e.key === "Enter") {
+          var list2 = items();
+          var el2 = list2[activeIndex()];
+          if (el2 && el2 instanceof HTMLElement) el2.click();
+        }
+      });
+      c.querySelectorAll("[data-close]").forEach(function (el) {
+        el.addEventListener("click", closeCmdk);
+      });
+      if (results) {
+        var r = results;
+        r.querySelectorAll(".cmdk__item").forEach(function (el, i) {
+          el.addEventListener("click", function () {
+            var href = (el as HTMLElement).getAttribute("data-href") || "#top";
+            closeCmdk();
+            if (href.startsWith("mailto:") || href.startsWith("http")) {
+              window.open(href, href.startsWith("http") ? "_blank" : "_self");
+            } else {
+              document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+          el.addEventListener("mousemove", function () { setActive(i); });
+        });
+      }
+      if (input) {
+        var inp: HTMLInputElement = input;
+        inp.addEventListener("input", function () {
+          var q = inp.value.toLowerCase().trim();
+          items().forEach(function (el) {
+            var t = (el.textContent || "").toLowerCase();
+            (el as HTMLElement).style.display = !q || t.includes(q) ? "" : "none";
+          });
+          setActive(0);
+        });
+      }
+    }
   })();
 </script>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background: color-mix(in oklch, var(--color-paper) 82%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    max-width: 72rem;
+    margin-inline: auto;
+    padding: var(--space-sm) var(--space-md);
+    min-width: 0;
+  }
+  .nav__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    text-decoration: none;
+    color: var(--color-ink);
+    white-space: nowrap;
+    margin-right: auto;
+    min-width: 0;
+  }
+  .nav__avatar { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--color-rule-2); }
+  .nav__wordmark {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .nav__status {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--color-accent);
+  }
+  .searchpill {
+    display: flex; align-items: center; gap: var(--space-sm);
+    height: 40px; padding: 0 var(--space-sm) 0 var(--space-md);
+    background: var(--color-paper-2);
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-pill);
+    color: var(--color-muted);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: border-color var(--dur-short) var(--ease-out);
+  }
+  .searchpill:hover { border-color: var(--color-rule-2); }
+  .searchpill__text { overflow: hidden; text-overflow: ellipsis; }
+  .searchpill__kbd { display: flex; gap: 2px; }
+  .searchpill__kbd kbd,
+  .cmdk kbd {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    border: 1px solid var(--color-rule);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 0 4px;
+    color: var(--color-muted);
+    background: var(--color-paper);
+  }
+  .nav__right { display: none; align-items: center; gap: var(--space-lg); margin-left: auto; }
+  .nav__link {
+    color: var(--color-ink-2);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    white-space: nowrap;
+    transition: color var(--dur-micro) var(--ease-out);
+  }
+  .nav__link:hover { color: var(--color-ink); }
+  .nav__cta {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-accent-ink);
+    background: var(--color-accent);
+    border-radius: var(--radius-pill);
+    padding: var(--space-sm) var(--space-md);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform var(--dur-micro) var(--ease-out);
+  }
+  .nav__cta:hover { transform: translateY(-1px); }
+  .nav__cta:active { transform: translateY(0); }
+  .nav__burger {
+    display: inline-flex; padding: var(--space-sm);
+    background: none; border: none; color: var(--color-ink);
+    min-width: 44px; min-height: 44px;
+    align-items: center; justify-content: center;
+  }
+  .nav__mobile { border-top: 1px solid var(--color-rule); background: var(--color-paper-2); }
+  .nav__mobile-links { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: var(--space-sm) var(--space-md) var(--space-md); }
+  .nav__mobile-links a {
+    color: var(--color-ink); text-decoration: none; font-size: var(--text-md);
+    padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-rule);
+  }
+  .nav__mobile-links a:last-child { border-bottom: none; }
+  .cmdk { position: fixed; inset: 0; z-index: var(--z-modal); opacity: 0; visibility: hidden; transition: opacity var(--dur-short) var(--ease-out), visibility var(--dur-short) var(--ease-out); }
+  .cmdk.is-open { opacity: 1; visibility: visible; }
+  .cmdk__backdrop { position: absolute; inset: 0; background: color-mix(in oklch, var(--color-scrim) 60%, transparent); }
+  .cmdk__panel {
+    position: absolute; top: 14vh; left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    width: min(560px, calc(100vw - 2rem));
+    background: var(--color-paper-2);
+    border: 1px solid var(--color-rule-2);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform var(--dur-short) var(--ease-out);
+  }
+  .cmdk.is-open .cmdk__panel { transform: translateX(-50%) translateY(0); }
+  .cmdk__field { display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-md); border-bottom: 1px solid var(--color-rule); color: var(--color-muted); }
+  .cmdk__field input {
+    flex: 1; min-width: 0; background: none; border: none; outline: none;
+    color: var(--color-ink); font-size: var(--text-base); font-family: var(--font-body);
+  }
+  .cmdk__results { max-height: 50vh; overflow: auto; padding: var(--space-sm); }
+  .cmdk__group {
+    font-family: var(--font-mono); font-size: var(--text-xs);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--color-muted); margin: var(--space-sm) var(--space-sm) var(--space-xs);
+  }
+  .cmdk__item {
+    display: flex; justify-content: space-between; align-items: center; gap: var(--space-md);
+    width: 100%; text-align: left;
+    background: none; border: none; border-radius: var(--radius-input);
+    color: var(--color-ink); font-size: var(--text-sm); font-family: var(--font-body);
+    padding: var(--space-sm) var(--space-sm); cursor: pointer;
+    min-height: 44px;
+  }
+  .cmdk__item.is-active { background: var(--color-paper-3); }
+  .cmdk__hint { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-muted); white-space: nowrap; }
+  .cmdk__foot {
+    display: flex; gap: var(--space-md); padding: var(--space-sm) var(--space-md);
+    border-top: 1px solid var(--color-rule);
+    font-size: var(--text-xs); color: var(--color-muted);
+  }
+  @media (min-width: 60rem) {
+    .nav__right { display: flex; }
+    .nav__burger { display: none; }
+    .nav__brand { margin-right: 0; }
+    .searchpill { margin-inline: auto; min-width: 240px; }
+  }
+  @media (max-width: 59.99rem) {
+    .searchpill__text { display: none; }
+    .searchpill { height: 44px; }
+  }
+</style>
