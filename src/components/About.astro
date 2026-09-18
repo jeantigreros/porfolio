@@ -17,83 +17,73 @@ import SqlIcon from "./icons/Sql.astro";
 import PandasIcon from "./icons/Pandas.astro";
 ---
 
-<section id="about">
-  <SectionDivider title="Sobre mí" />
-  <div class="[background:radial-gradient(circle_at_70%_40%,rgb(46,46,47),transparent_450px),radial-gradient(circle_at_25%_65%,rgb(46,46,47),transparent_450px)]">
+<section id="sobre-mi" class="reveal" style="--i: 2" aria-labelledby="sobre-title">
+  <div class="wrap">
+    <SectionDivider title="Sobre mí" note="Palmira · UNAD · freelance" />
     <Card>
-      <div class="xl:col-span-2 xl:row-span-2 bg-[#25262b] rounded-3xl p-6 md:p-8 border border-[#313234] hover:border-gray-600 transition-all duration-300">
-        <h2 class="text-2xl md:text-3xl text-[#9db2bf] font-bold">Jean Carlos Tigreros</h2>
-        <p class="text-base md:text-xl leading-relaxed mt-4 text-gray-200">
-          Hola! tengo 21 años, actualmente estoy cursando una ingeniería en la
-          Universidad Nacional Abierta y a Distancia, en Palmira, Colombia 🇨🇴,
-          soy desarrollador web freelancer, mi enfoque está dirigido al
-          desarrollo de soluciones de software, desarrollo de páginas web, entre
-          otros. Desde pequeño siempre me ha interesado el software, y con el
-          tiempo se ha convertido en una pasión 😊
-        </p>
-        <p class="text-base md:text-xl leading-relaxed mt-4 text-gray-200">
-          Dale un vistazo a mis redes sociales!
-        </p>
-        <div class="flex gap-4 mt-3">
-          <a class="underline text-blue-400 hover:text-blue-300 transition" href="https://github.com/jeantigreros" target="_blank">Github</a>
-          <a class="underline text-blue-400 hover:text-blue-300 transition" href="https://x.com/nekro24" target="_blank">X</a>
-        </div>
-      </div>
-
-      <div class="xl:col-span-1 xl:row-span-3 bg-[#25262b] rounded-3xl p-6 md:p-8 border border-[#313234] hover:border-gray-600 transition-all duration-300">
-        <h2 class="text-2xl md:text-3xl text-[#9db2bf] font-bold">Habilidades</h2>
-        <p class="text-base md:text-xl leading-relaxed mt-4 text-gray-200">Tecnologías con las que trabajo:</p>
-        <div class="skills-grid flex flex-wrap gap-3 justify-center pt-6 [&>*]:bg-slate-800 [&>*]:rounded-xl [&>*]:border [&>*]:border-[#313234] [&>*]:p-3 md:[&>*]:p-5 [&>*]:text-center [&>*]:min-w-[80px]">
-          <AstroIcon />
-          <NextjsIcon />
-          <ReactIcon />
-          <CssIcon />
-          <JavascriptIcon />
-          <TypescriptIcon />
-          <HtmlIcon />
-          <TailwindIcon />
-          <PythonIcon />
-          <SqlIcon />
-          <PandasIcon />
-          <NodeIcon />
-          <LinuxIcon />
-          <GitIcon />
-        </div>
-      </div>
-
-      <div class="xl:col-span-1 xl:row-span-1 bg-[#25262b] rounded-3xl p-6 md:p-8 border border-[#313234] hover:border-gray-600 transition-all duration-300">
-        <h2 class="text-2xl md:text-3xl text-[#9db2bf] font-bold">Aficiones</h2>
-        <p class="text-base md:text-xl leading-relaxed mt-4 text-gray-200">
-          Fuera del desarrollo: 🎮 <span class="text-[#9db2bf] font-bold">Videojuegos</span>,
-          🏛️ <span class="text-[#9db2bf] font-bold">Filosofía</span>,
-          📷 <span class="text-[#9db2bf] font-bold">Fotografía</span>,
-          💪 <span class="text-[#9db2bf] font-bold">Ejercicio</span>
+      <div class="about__bio">
+        <h3 class="about__name" id="sobre-title">Jean Carlos Tigreros</h3>
+        <p>Hola, tengo 21 años y estudio ingeniería en la Universidad Nacional Abierta y a Distancia, en Palmira, Colombia. Soy desarrollador web freelance: soluciones de software, páginas web y sistemas que terminan corriendo de verdad — desde un servidor en una TV Box hasta un puente de impresión para ODOO.</p>
+        <p>Fuera del desarrollo: videojuegos, filosofía, fotografía y ejercicio.</p>
+        <p class="about__social">
+          <a href="https://github.com/jeantigreros" target="_blank" rel="noopener">GitHub →</a>
+          <a href="https://x.com/nekro24" target="_blank" rel="noopener">X →</a>
+          <a href="https://co.linkedin.com/in/jean-carlos-tigreros-0187b12b5" target="_blank" rel="noopener">LinkedIn ↗</a>
         </p>
       </div>
-
-      <div class="xl:col-span-1 xl:row-span-1 bg-[#25262b] rounded-3xl border border-[#313234] hover:border-gray-600 transition-all duration-300 flex flex-col items-center justify-center p-6">
-        <span class="text-4xl md:text-5xl text-white font-light" id="time">0:00 PM</span>
-        <p class="text-xl md:text-2xl text-gray-400 mt-2">Colombia 🇨🇴</p>
+      <div class="about__skills">
+        <h3 class="about__h">Stack</h3>
+        <ul class="skills">
+          <li><AstroIcon /></li>
+          <li><NextjsIcon /></li>
+          <li><ReactIcon /></li>
+          <li><CssIcon /></li>
+          <li><JavascriptIcon /></li>
+          <li><TypescriptIcon /></li>
+          <li><HtmlIcon /></li>
+          <li><TailwindIcon /></li>
+          <li><PythonIcon /></li>
+          <li><SqlIcon /></li>
+          <li><PandasIcon /></li>
+          <li><NodeIcon /></li>
+          <li><LinuxIcon /></li>
+          <li><GitIcon /></li>
+        </ul>
       </div>
     </Card>
   </div>
 </section>
 
 <style>
-  .skills-grid :global(svg) {
-    width: 2.5rem;
-    height: 2.5rem;
-    padding-top: 0;
+  .wrap { max-width: 72rem; margin-inline: auto; padding: 0 var(--space-md); }
+  .about__bio p { color: var(--color-ink-2); font-size: var(--text-md); line-height: 1.65; max-width: 65ch; margin: 0 0 var(--space-md); }
+  .about__name {
+    font-family: var(--font-display); font-style: normal; font-weight: 700;
+    font-size: var(--text-xl); letter-spacing: -0.02em; line-height: 1.15;
+    color: var(--color-ink); margin: 0 0 var(--space-md);
+    overflow-wrap: anywhere; min-width: 0;
   }
+  .about__h {
+    font-family: var(--font-mono); font-size: var(--text-xs);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--color-muted); margin: 0 0 var(--space-md);
+  }
+  .about__social { display: flex; flex-wrap: wrap; gap: var(--space-md); }
+  .about__social a { color: var(--color-accent); font-weight: 600; font-size: var(--text-base); white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; }
+  .skills {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: var(--space-sm);
+  }
+  .skills li {
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-card);
+    background: var(--color-paper-2);
+    padding: var(--space-sm) var(--space-md);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-ink-2);
+    min-width: 0;
+  }
+  .skills :global(svg) { width: 1.4rem; height: 1.4rem; display: block; margin-bottom: var(--space-2xs); }
+  .skills :global(div) { display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
 </style>
-
-<script>
-  (function() {
-    var el = document.querySelector("#time");
-    if (el) {
-      var formatter = new Intl.DateTimeFormat([], { timeZone: 'America/Bogota', hour: 'numeric', minute: 'numeric' } as Intl.DateTimeFormatOptions);
-      el.textContent = formatter.format(new Date());
-      setInterval(function() { if (el) el.textContent = formatter.format(new Date()); }, 1000);
-    }
-  })();
-</script>
