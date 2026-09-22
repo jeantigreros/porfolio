@@ -1,11 +1,14 @@
 ---
+const date = new Date()
+let year = date.getFullYear()
+let age = year - 2003
 ---
 
 <section class="hero reveal" style="--i: 0" aria-labelledby="hero-title">
   <div class="hero__main">
     <p class="hero__kicker"><span class="hero__dot" aria-hidden="true"></span>Open to work · Palmira, Colombia</p>
     <h1 class="hero__display" id="hero-title">Jean Tigreros — data engineering, from ingestion to serving.</h1>
-    <p class="hero__lede">I'm 21 and I study systems engineering at UNAD. I work freelance: data pipelines, ETL processes, and backends — plus the Linux servers that end up serving real traffic on my local network.</p>
+    <p class="hero__lede">I'm {age} and I study systems engineering at UNAD. I work freelance: data pipelines, ETL processes, and backends — plus the Linux servers that end up serving real traffic on my local network.</p>
     <div class="hero__actions">
       <a class="hero__link" href={import.meta.env.BASE_URL + "/resume.pdf"} target="_blank" rel="noopener">Download CV →</a>
       <a class="hero__link hero__link--quiet" href="mailto:jtigreros92@gmail.com">Contact me ↗</a>
