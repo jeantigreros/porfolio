@@ -1,10 +1,10 @@
 export const PROJECTS = [
   {
     slug: "tvbox-server",
-    title: "Monté mi propia nube en casa",
+    title: "Built my own home cloud",
     hidden: false,
     description:
-      "Modifiqué y compilé una imagen personalizada de Armbian para que funcionara en una TVBOX DQ08, con la finalidad de que sirviera como un servidor con linux disponible en mi red local.",
+      "Modified and compiled a custom Armbian image to run on a DQ08 TV box, turning it into a Linux server available on my local network for hosting services and data workloads.",
     tech: [
       "Linux",
       "Docker",
@@ -17,10 +17,10 @@ export const PROJECTS = [
 
   {
     slug: "python-odoo-script",
-    title: "Aplicación para permitir impresión desde un servicio externo",
+    title: "Print bridge for an external service",
     hidden: false,
     description:
-      "Hice un servidor web que toma el XML que da ODOO lo transforma en una imagen, lee la imagen, y manda comandos ESC/POS a la impresora para imprimir.",
+      "Built a web server that takes XML from ODOO, renders it as an image, parses the image, and sends ESC/POS commands to a printer — a small ingestion-to-output pipeline.",
     tech: [
       "Flask",
       "Web Server",
@@ -35,7 +35,7 @@ export const PROJECTS = [
     title: "Grupo SiNNSA",
     hidden: false,
     description:
-    "Desarrollé una plataforma web full-stack para Grupo SINNSA orientada a fortalecer su presencia digital y facilitar el contacto con clientes. El proyecto incluyó el diseño de la interfaz, arquitectura del sistema y desarrollo del backend para gestionar contenido y consultas. La solución está optimizada para rendimiento, SEO y experiencia de usuario, permitiendo a la empresa presentar sus servicios de forma profesional y escalable.",
+      "Built a full-stack web platform for Grupo SINNSA to strengthen its digital presence and streamline client contact. The project covered UI design, system architecture, and backend development for managing content and inquiries. The solution is optimized for performance, SEO, and user experience, letting the company present its services in a professional, scalable way.",
     tech: [
       "Frontend Development",
       "Backend Development",
@@ -49,9 +49,9 @@ export const PROJECTS = [
   },
   {
     slug: "checkdisks",
-    title: "Proceso ETL personal para indexación de HDDs",
+    title: "Custom ETL pipeline for HDD indexing",
     hidden: false,
-    description: "Proceso ETL para el almacenamiento de información de discos duros/sólidos integrado con un script para comprobar con SMART la integridad de los mismos. El script produce un json con la información del disco y el pipeline ingresa los datos, los limpia y produce un archivo parquet con la información lista",
+    description: "ETL pipeline for storing hard/solid drive information, integrated with a script that checks drive health with SMART. The script produces JSON with disk info, and the pipeline ingests the data, cleans it, and outputs a Parquet file with analysis-ready data.",
     tech: [
       "SMART",
       "Python",

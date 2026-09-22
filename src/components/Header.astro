@@ -6,7 +6,7 @@ const visible = PROJECTS.filter((p) => !p.hidden);
 
 <header class="nav" id="site-nav">
   <div class="nav__inner">
-    <a href="#top" class="nav__brand" aria-label="Jean Tigreros — inicio">
+    <a href="#top" class="nav__brand" aria-label="Jean Tigreros — home">
       <img
         class="nav__avatar"
         src={import.meta.env.BASE_URL + "/popcat.gif"}
@@ -19,45 +19,45 @@ const visible = PROJECTS.filter((p) => !p.hidden);
       <span class="nav__status" aria-hidden="true"></span>
     </a>
 
-    <button class="searchpill" id="searchpill" type="button" aria-label="Buscar en el sitio (Ctrl K)">
+    <button class="searchpill" id="searchpill" type="button" aria-label="Search this site (Ctrl K)">
       <svg class="searchpill__ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
-      <span class="searchpill__text">Buscar proyectos…</span>
+      <span class="searchpill__text">Search projects…</span>
       <span class="searchpill__kbd" aria-hidden="true"><kbd>Ctrl</kbd><kbd>K</kbd></span>
     </button>
 
-    <nav class="nav__right" aria-label="Principal">
-      <a href="#proyectos" class="nav__link">Proyectos</a>
-      <a href="#sobre-mi" class="nav__link">Sobre mí</a>
-      <a href="mailto:jtigreros92@gmail.com" class="nav__cta">Contacto</a>
+    <nav class="nav__right" aria-label="Main">
+      <a href="#projects" class="nav__link">Projects</a>
+      <a href="#about" class="nav__link">About</a>
+      <a href="mailto:jtigreros92@gmail.com" class="nav__cta">Contact</a>
     </nav>
 
-    <button id="menu-toggle" class="nav__burger" aria-label="Abrir menú" aria-expanded="false">
+    <button id="menu-toggle" class="nav__burger" aria-label="Open menu" aria-expanded="false">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
   <div id="mobile-menu" class="nav__mobile" hidden>
-    <nav class="nav__mobile-links" aria-label="Móvil">
-      <a href="#proyectos">Proyectos</a>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="mailto:jtigreros92@gmail.com">Contacto</a>
+    <nav class="nav__mobile-links" aria-label="Mobile">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="mailto:jtigreros92@gmail.com">Contact</a>
     </nav>
   </div>
 </header>
 
 <div class="cmdk" id="cmdk" aria-hidden="true">
   <div class="cmdk__backdrop" data-close></div>
-  <div class="cmdk__panel" role="dialog" aria-modal="true" aria-label="Buscar en el sitio">
+  <div class="cmdk__panel" role="dialog" aria-modal="true" aria-label="Search this site">
     <div class="cmdk__field">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
-      <input id="cmdk-input" type="text" placeholder="Buscar proyectos o secciones…" autocomplete="off" />
+      <input id="cmdk-input" type="text" placeholder="Search projects or sections…" autocomplete="off" />
       <kbd>esc</kbd>
     </div>
-    <div class="cmdk__results" id="cmdk-results" role="listbox" aria-label="Resultados">
-      <p class="cmdk__group">Secciones</p>
-      <button class="cmdk__item" role="option" data-href="#proyectos"><span>Proyectos</span><span class="cmdk__hint">índice</span></button>
-      <button class="cmdk__item" role="option" data-href="#sobre-mi"><span>Sobre mí</span><span class="cmdk__hint">perfil</span></button>
-      <button class="cmdk__item" role="option" data-href="mailto:jtigreros92@gmail.com"><span>Contacto</span><span class="cmdk__hint">email</span></button>
-      <p class="cmdk__group">Trabajo</p>
+    <div class="cmdk__results" id="cmdk-results" role="listbox" aria-label="Results">
+      <p class="cmdk__group">Sections</p>
+      <button class="cmdk__item" role="option" data-href="#projects"><span>Projects</span><span class="cmdk__hint">index</span></button>
+      <button class="cmdk__item" role="option" data-href="#about"><span>About</span><span class="cmdk__hint">profile</span></button>
+      <button class="cmdk__item" role="option" data-href="mailto:jtigreros92@gmail.com"><span>Contact</span><span class="cmdk__hint">email</span></button>
+      <p class="cmdk__group">Work</p>
       {visible.map((p) => (
         <button class="cmdk__item" role="option" data-href={p.link}>
           <span>{p.title}</span><span class="cmdk__hint">{p.tech.slice(0, 2).join(" · ")}</span>
@@ -65,9 +65,9 @@ const visible = PROJECTS.filter((p) => !p.hidden);
       ))}
     </div>
     <div class="cmdk__foot" aria-hidden="true">
-      <span><kbd>↑</kbd><kbd>↓</kbd> navegar</span>
-      <span><kbd>↵</kbd> abrir</span>
-      <span><kbd>esc</kbd> cerrar</span>
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> open</span>
+      <span><kbd>esc</kbd> close</span>
     </div>
   </div>
 </div>

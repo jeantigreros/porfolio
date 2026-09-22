@@ -3,20 +3,20 @@
 
 <section class="hero reveal" style="--i: 0" aria-labelledby="hero-title">
   <div class="hero__main">
-    <p class="hero__kicker"><span class="hero__dot" aria-hidden="true"></span>Disponible para trabajar · Palmira, Colombia</p>
-    <h1 class="hero__display" id="hero-title">Jean Tigreros — desarrollo web y sistemas, de la idea al servidor.</h1>
-    <p class="hero__lede">Tengo 21 años y estudio ingeniería de sistemas en la UNAD. Trabajo freelance: páginas web, backends pequeños y fierros que terminan sirviendo tráfico real en mi red local.</p>
+    <p class="hero__kicker"><span class="hero__dot" aria-hidden="true"></span>Open to work · Palmira, Colombia</p>
+    <h1 class="hero__display" id="hero-title">Jean Tigreros — data engineering, from ingestion to serving.</h1>
+    <p class="hero__lede">I'm 21 and I study systems engineering at UNAD. I work freelance: data pipelines, ETL processes, and backends — plus the Linux servers that end up serving real traffic on my local network.</p>
     <div class="hero__actions">
-      <a class="hero__link" href={import.meta.env.BASE_URL + "/resume.pdf"} target="_blank" rel="noopener">Descargar CV →</a>
-      <a class="hero__link hero__link--quiet" href="mailto:jtigreros92@gmail.com">Escríbeme ↗</a>
+      <a class="hero__link" href={import.meta.env.BASE_URL + "/resume.pdf"} target="_blank" rel="noopener">Download CV →</a>
+      <a class="hero__link hero__link--quiet" href="mailto:jtigreros92@gmail.com">Contact me ↗</a>
     </div>
   </div>
-  <aside class="hero__proof" aria-label="Estado actual">
+  <aside class="hero__proof" aria-label="Current status">
     <dl class="proof">
-      <div class="proof__row"><dt>ubicación</dt><dd>América/Bogotá · <span id="time">—</span></dd></div>
-      <div class="proof__row"><dt>foco</dt><dd>web · linux · datos</dd></div>
-      <div class="proof__row"><dt>ahora</dt><dd>4 proyectos publicados</dd></div>
-      <div class="proof__row"><dt>contacto</dt><dd><a href="https://github.com/jeantigreros" target="_blank" rel="noopener">github</a> · <a href="https://x.com/nekro24" target="_blank" rel="noopener">x</a> · <a href="https://co.linkedin.com/in/jean-carlos-tigreros-0187b12b5" target="_blank" rel="noopener">linkedin</a></dd></div>
+      <div class="proof__row"><dt>location</dt><dd>America/Bogota · <span id="time">—</span></dd></div>
+      <div class="proof__row"><dt>focus</dt><dd>data · pipelines · linux</dd></div>
+      <div class="proof__row"><dt>now</dt><dd>4 published projects</dd></div>
+      <div class="proof__row"><dt>contact</dt><dd><a href="https://github.com/jeantigreros" target="_blank" rel="noopener">github</a> · <a href="https://x.com/nekro24" target="_blank" rel="noopener">x</a> · <a href="https://co.linkedin.com/in/jean-carlos-tigreros-0187b12b5" target="_blank" rel="noopener">linkedin</a></dd></div>
     </dl>
   </aside>
 </section>
@@ -25,7 +25,7 @@
   (function () {
     var el = document.querySelector("#time");
     if (el) {
-      var fmt = new Intl.DateTimeFormat("es-CO", { timeZone: "America/Bogota", hour: "numeric", minute: "2-digit" });
+      var fmt = new Intl.DateTimeFormat("en-US", { timeZone: "America/Bogota", hour: "numeric", minute: "2-digit" });
       el.textContent = fmt.format(new Date());
       setInterval(function () { if (el) el.textContent = fmt.format(new Date()); }, 30000);
     }

@@ -5,9 +5,9 @@ import SectionDivider from "./SectionDivider.astro";
 const projects = PROJECTS.filter((p) => !p.hidden).reverse();
 ---
 
-<section id="proyectos" class="reveal" style="--i: 1" aria-labelledby="proyectos-title">
+<section id="projects" class="reveal" style="--i: 1" aria-labelledby="projects-title">
   <div class="wrap">
-    <SectionDivider title="Índice de trabajo" note="Seleccionado · 4 entradas" />
+    <SectionDivider title="Work index" note="Selected · 4 entries" />
     <ol class="index">
       {projects.map((project, i) => {
         const num = String(projects.length - i).padStart(2, "0");
@@ -23,10 +23,10 @@ const projects = PROJECTS.filter((p) => !p.hidden).reverse();
             </div>
             <div class="row__links">
               {project.code && (
-                <a class="row__action" href={`https://github.com/jeantigreros/${project.slug}`} target="_blank" rel="noopener noreferrer">Código →</a>
+                <a class="row__action" href={`https://github.com/jeantigreros/${project.slug}`} target="_blank" rel="noopener noreferrer">Code →</a>
               )}
               <a class="row__action" href={project.link} target={project.link.startsWith("http") ? "_blank" : undefined} rel="nofollow noopener noreferrer">
-                {project.demo ? "Demo ↗" : "Abrir ↗"}
+                {project.demo ? "Demo ↗" : "Open ↗"}
               </a>
             </div>
           </li>
