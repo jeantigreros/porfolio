@@ -15,6 +15,10 @@ import LinuxIcon from "./icons/Linux.astro";
 import GitIcon from "./icons/Git.astro";
 import SqlIcon from "./icons/Sql.astro";
 import PandasIcon from "./icons/Pandas.astro";
+
+const date = new Date()
+let year = date.getFullYear()
+let age = year - 2003
 ---
 
 <section id="about" class="reveal" style="--i: 2" aria-labelledby="about-title">
@@ -23,7 +27,7 @@ import PandasIcon from "./icons/Pandas.astro";
     <Card>
       <div class="about__bio">
         <h3 class="about__name" id="about-title">Jean Carlos Tigreros</h3>
-        <p>Hi, I'm 23 and I study engineering at Universidad Nacional Abierta y a Distancia, in Palmira, Colombia. I'm an engineer focused on data engineering and application development: I build ETL pipelines, clean and model data with Python, SQL, and Pandas, and ship it in Parquet-ready, analysis-ready form.</p>
+        <p>Hi, I'm {age} and I study engineering at Universidad Nacional Abierta y a Distancia, in Palmira, Colombia. I'm an engineer focused on data engineering and application development: I build ETL pipelines, clean and model data with Python, SQL, and Pandas, and ship it in Parquet-ready, analysis-ready form.</p>
         <p>Outside of development: video games, philosophy, photography, and working out.</p>
         <p class="about__social">
           <a href="https://github.com/jeantigreros" target="_blank" rel="noopener">GitHub →</a>
