@@ -17,14 +17,15 @@ export const PROJECTS = [
 
   {
     slug: "python-odoo-script",
-    title: "Print bridge for an external service",
+    title: "Odoo windows bridge ESC/POS",
     hidden: false,
     description:
-      "Built a web server that takes XML from ODOO, renders it as an image, parses the image, and sends ESC/POS commands to a printer — a small ingestion-to-output pipeline.",
+      "Lightweight Python/Flask print bridge for Odoo POS that enables Odoo to communicate with standard Windows thermal printers, with support for receipt scaling, centering, cash drawers, automatic cutting, and printer locking.",
     tech: [
       "Flask",
       "Web Server",
-      "Serial Ports",
+      "Python",
+      "XML"
     ],
     link: "https://github.com/jeantigreros/python-odoo-script",
     demo: false,
