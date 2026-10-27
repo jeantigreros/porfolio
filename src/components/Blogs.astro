@@ -18,7 +18,7 @@ const posts = (await getCollection('blog')).sort(
       <span class="row__num" aria-hidden="true">{num}</span>
       <div class="row__body">
         <h3 class="row__title">
-          <a href={post.data.link} target="_blank" rel="nofollow noopener noreferrer">{post.data.title}</a>
+          <a href=`porfolio/${post.id}` target="_blank" rel="nofollow noopener noreferrer">{post.data.title}</a>
         </h3>
         <p class="row__desc">{post.data.description}</p>
         <FormattedDate date={post.data.pubDate} />
