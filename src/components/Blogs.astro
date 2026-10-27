@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+import SectionDivider from './SectionDivider.astro';
+
+const posts = (await getCollection('blog')).sort(
+(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+<section id="blogs" class="reveal" style="--i: 2" aria-labelledby="blogs">
+  <div class="wrap">
+  <SectionDivider title="Blogs index" />
+  <ol class="index">
+    {posts.map((post, i) => {
+    const num: String = String(posts.length - i).padStart(2, "0");
+    return (
+    <li class="row">
+      <span class="row__num" aria-hidden="true">{num}</span>
+      <div class="row__body">
+        <h3 class="row__title">
+          <a href={post.data.link} target="_blank" rel="nofollow noopener noreferrer">{post.data.title}</a>
+        </h3>
+        <p class="row__desc">{post.data.description}</p>
+        <FormattedDate date={post.data.pubDate} />
+      </div>
+      <div class="row__links">
+        <a class="row__action" href=`blog/${post.id}` target={post.id} rel="nofollow noopener noreferrer">
+          Open ↗
+        </a>
+      </div>
+    </li>
+    )
+    })}
+  </ol>
+  </div>
+</section>
+
+<style>
+  .wrap { max-width: 72rem; margin-inline: auto; padding: 0 var(--space-md); }
+  .index { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--color-rule-2); }
+  .row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-sm);
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--color-rule);
+    transition: background-color var(--dur-short) var(--ease-out);
+  }
+  .row:hover { background: color-mix(in oklch, var(--color-paper-2) 60%, transparent); }
+  .row__num {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .row__body { min-width: 0; }
+  .row__title { margin: 0 0 var(--space-xs); font-family: var(--font-display); font-style: normal; font-weight: 700; font-size: var(--text-lg); letter-spacing: -0.02em; line-height: 1.2; overflow-wrap: anywhere; min-width: 0; }
+  .row__title a { color: var(--color-ink); text-decoration: none; }
+  .row__title a:hover { color: var(--color-accent); }
+  .row__desc { margin: 0 0 var(--space-sm); color: var(--color-ink-2); font-size: var(--text-base); line-height: 1.6; max-width: 65ch; }
+  .row__tech { margin: 0; font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.04em; color: var(--color-muted); }
+  .row__links { display: flex; flex-wrap: wrap; gap: var(--space-md); align-content: start; }
+  .row__action {
+    font-size: var(--text-sm); font-weight: 600;
+    color: var(--color-ink); text-decoration: none;
+    border-bottom: 1px solid var(--color-rule-2);
+    padding-bottom: 2px;
+    white-space: nowrap; min-height: 44px;
+    display: inline-flex; align-items: center;
+  }
+  .row__action:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+  @media (min-width: 60rem) {
+    .row { grid-template-columns: minmax(0, 4rem) minmax(0, 1fr) minmax(0, 11rem); gap: var(--space-lg); }
+    .row__links { flex-direction: column; align-items: flex-end; gap: var(--space-sm); }
+  }
+</style>

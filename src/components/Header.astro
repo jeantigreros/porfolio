@@ -1,11 +1,17 @@
 ---
 import { PROJECTS, SITE_TITLE } from "../const";
 const visible = PROJECTS.filter((p) => !p.hidden);
+
+const base = import.meta.env.BASE_URL;
+const path = Astro.url.pathname;
+const isHome = path === base || path === base + "/";
+const onBlog = path.startsWith(base + "/blog");
+const homeLink = (hash: string) => (isHome ? hash : `${base}/${hash}`);
 ---
 
 <header class="nav" id="site-nav">
   <div class="nav__inner">
-    <a href="#top" class="nav__brand" aria-label="Jean Tigreros — home">
+    <a href={isHome ? "#top" : base + "/"} class="nav__brand" aria-label="Jean Tigreros, home">
       <img
         class="nav__avatar"
         src={import.meta.env.BASE_URL + "/popcat.gif"}
@@ -25,9 +31,9 @@ const visible = PROJECTS.filter((p) => !p.hidden);
     </button>
 
     <nav class="nav__right" aria-label="Main">
-      <a href="#projects" class="nav__link">Projects</a>
-      <a href="#about" class="nav__link">About</a>
-      <a href="/porfolio/blog" class="nav__link">Blog</a>
+      <a href={homeLink("#projects")} class="nav__link">Projects</a>
+      <a href={homeLink("#about")} class="nav__link">About</a>
+      <a href={base + "/blog"} class="nav__link" aria-current={onBlog ? "page" : undefined}>Blog</a>
       <a href="mailto:jtigreros92@gmail.com" class="nav__cta">Contact</a>
     </nav>
 
@@ -37,8 +43,9 @@ const visible = PROJECTS.filter((p) => !p.hidden);
   </div>
   <div id="mobile-menu" class="nav__mobile" hidden>
     <nav class="nav__mobile-links" aria-label="Mobile">
-      <a href="#projects">Projects</a>
-      <a href="#about">About</a>
+      <a href={homeLink("#projects")}>Projects</a>
+      <a href={homeLink("#about")}>About</a>
+      <a href={base + "/blog"}>Blog</a>
       <a href="mailto:jtigreros92@gmail.com">Contact</a>
     </nav>
   </div>
@@ -54,8 +61,9 @@ const visible = PROJECTS.filter((p) => !p.hidden);
     </div>
     <div class="cmdk__results" id="cmdk-results" role="listbox" aria-label="Results">
       <p class="cmdk__group">Sections</p>
-      <button class="cmdk__item" role="option" data-href="#projects"><span>Projects</span><span class="cmdk__hint">index</span></button>
-      <button class="cmdk__item" role="option" data-href="#about"><span>About</span><span class="cmdk__hint">profile</span></button>
+      <button class="cmdk__item" role="option" data-href={homeLink("#projects")}><span>Projects</span><span class="cmdk__hint">index</span></button>
+      <button class="cmdk__item" role="option" data-href={homeLink("#about")}><span>About</span><span class="cmdk__hint">profile</span></button>
+      <button class="cmdk__item" role="option" data-href={base + "/blog"}><span>Blog</span><span class="cmdk__hint">writing</span></button>
       <button class="cmdk__item" role="option" data-href="mailto:jtigreros92@gmail.com"><span>Contact</span><span class="cmdk__hint">email</span></button>
       <p class="cmdk__group">Work</p>
       {visible.map((p) => (
@@ -171,7 +179,9 @@ const visible = PROJECTS.filter((p) => !p.hidden);
             if (href.startsWith("mailto:") || href.startsWith("http")) {
               window.open(href, href.startsWith("http") ? "_blank" : "_self");
             } else {
-              document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+              var target = document.querySelector(href);
+              if (target) target.scrollIntoView({ behavior: "smooth" });
+              else if (href.startsWith("/")) window.location.href = href;
             }
           });
           el.addEventListener("mousemove", function () { setActive(i); });
@@ -299,7 +309,8 @@ const visible = PROJECTS.filter((p) => !p.hidden);
   .cmdk__panel {
     position: absolute; top: 14vh; left: 50%;
     transform: translateX(-50%) translateY(-8px);
-    width: min(560px, calc(100vw - 2rem));
+    width: 560px;
+    max-width: calc(100% - var(--space-2xl));
     background: var(--color-paper-2);
     border: 1px solid var(--color-rule-2);
     border-radius: 12px;
@@ -314,8 +325,7 @@ const visible = PROJECTS.filter((p) => !p.hidden);
   }
   .cmdk__results { max-height: 50vh; overflow: auto; padding: var(--space-sm); }
   .cmdk__group {
-    font-family: var(--font-mono); font-size: var(--text-xs);
-    text-transform: uppercase; letter-spacing: 0.1em;
+    font-family: var(--font-body); font-size: var(--text-sm);
     color: var(--color-muted); margin: var(--space-sm) var(--space-sm) var(--space-xs);
   }
   .cmdk__item {
@@ -325,7 +335,9 @@ const visible = PROJECTS.filter((p) => !p.hidden);
     color: var(--color-ink); font-size: var(--text-sm); font-family: var(--font-body);
     padding: var(--space-sm) var(--space-sm); cursor: pointer;
     min-height: 44px;
+    white-space: nowrap;
   }
+  .cmdk__item > span:first-child { overflow: hidden; text-overflow: ellipsis; }
   .cmdk__item.is-active { background: var(--color-paper-3); }
   .cmdk__hint { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-muted); white-space: nowrap; }
   .cmdk__foot {
@@ -341,6 +353,30 @@ const visible = PROJECTS.filter((p) => !p.hidden);
   }
   @media (max-width: 59.99rem) {
     .searchpill__text { display: none; }
-    .searchpill { height: 44px; }
+    .searchpill__kbd { display: none; }
+    .searchpill { height: 44px; padding: 0 var(--space-sm); gap: 0; }
+    .nav__status { display: none; }
+    .nav__avatar { width: 28px; height: 28px; }
+    .nav__wordmark { white-space: nowrap; }
+  }
+  .nav a:focus-visible,
+  .nav button:focus-visible,
+  .cmdk__item:focus-visible,
+  .cmdk__field input:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav__link,
+    .nav__cta,
+    .searchpill,
+    .cmdk,
+    .cmdk__panel {
+      transition-duration: 0.01ms;
+    }
+    .nav__cta:hover,
+    .nav__cta:active {
+      transform: none;
+    }
   }
 </style>

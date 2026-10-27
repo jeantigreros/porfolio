@@ -33,6 +33,9 @@ export default defineConfig({
 			},
 		},
   ],
+  markdown: {
+    syntaxHighlight: false,
+  },
   site: 'https://jeantigreros.github.io/porfolio',
   base: 'porfolio'
 });

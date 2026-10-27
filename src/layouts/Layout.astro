@@ -7,18 +7,36 @@ import "../styles/tokens.css";
 
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  lang?: string;
 }
-const { title } = Astro.props;
+
+const {
+  title,
+  description = "Jean Tigreros portfolio - Data engineer and systems engineering student",
+  image,
+  type = "website",
+  lang = "en",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const socialImage = image ? new URL(image, Astro.url) : null;
+const base = import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Jean Tigreros portfolio - Data engineer and systems engineering student" />
+    <meta name="description" content={description} />
     <meta name="theme-color" content="#1a1d27" />
-    <link rel="icon" type="image/svg+xml" href={import.meta.env.BASE_URL + '/favicon.ico'} />
+    <link rel="icon" type="image/svg+xml" href={base + "/favicon.ico"} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" type="application/rss+xml" title="Jean Tigreros" href={new URL("rss.xml", Astro.site ?? Astro.url)} />
+    <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,10 +44,20 @@ const { title } = Astro.props;
       rel="stylesheet"
     />
     <title>{title}</title>
+
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {socialImage && <meta property="og:image" content={socialImage} />}
+    <meta name="twitter:card" content={socialImage ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {socialImage && <meta name="twitter:image" content={socialImage} />}
   </head>
   <body>
     <Header />
-    <main>
+    <main id="main">
       <slot />
     </main>
     <Footer />
@@ -52,6 +80,9 @@ const { title } = Astro.props;
     background-color: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-body);
+  }
+  main {
+    flex: 1;
   }
   * {
     box-sizing: border-box;
