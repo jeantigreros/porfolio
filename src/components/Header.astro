@@ -1,6 +1,5 @@
 ---
-import { PROJECTS } from "../const";
-
+import { PROJECTS, SITE_TITLE } from "../const";
 const visible = PROJECTS.filter((p) => !p.hidden);
 ---
 
@@ -28,6 +27,7 @@ const visible = PROJECTS.filter((p) => !p.hidden);
     <nav class="nav__right" aria-label="Main">
       <a href="#projects" class="nav__link">Projects</a>
       <a href="#about" class="nav__link">About</a>
+      <a href="/porfolio/blog" class="nav__link">Blog</a>
       <a href="mailto:jtigreros92@gmail.com" class="nav__cta">Contact</a>
     </nav>
 
